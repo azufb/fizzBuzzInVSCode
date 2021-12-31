@@ -3,6 +3,7 @@
 	"displayName": "FizzBuzz in VSCode!",
 	"description": "",
 	"icon": "fizzBuzzInVSCodeLogo.png",
+	"publisher": "azunyan",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.63.0"
