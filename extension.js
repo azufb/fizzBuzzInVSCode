@@ -52,15 +52,18 @@ function activate(context) {
         }
 
         let n = 0;
+        // FizzBuzz in VSCode!用に出力場所を用意。
+        let outputArea = vscode.window.createOutputChannel('FizzBuzz');
         while (n <= limitNum) {
           if (n % 15 === 0) {
-            console.log(`${n}: FizzBuzz`);
+            // 引数に与えた値と行を出力場所に追加。
+            outputArea.appendLine(`${n}: FizzBuzz`);
           } else if (n % 5 === 0) {
-            console.log(`${n}: Buzz`);
+            outputArea.appendLine(`${n}: Buzz`);
           } else if (n % 3 === 0) {
-            console.log(`${n}: Fizz`);
+            outputArea.appendLine(`${n}: Fizz`);
           } else {
-            console.log(n);
+            outputArea.appendLine(`${n}`);
           }
           n++;
         }
