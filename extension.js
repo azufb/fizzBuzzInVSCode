@@ -54,13 +54,13 @@ function activate(context) {
         let n = 0;
         while (n <= limitNum) {
           if (n % 15 === 0) {
-            vscode.window.showInformationMessage(`${n}: FizzBuzz`);
+            console.log(`${n}: FizzBuzz`);
           } else if (n % 5 === 0) {
-            vscode.window.showInformationMessage(`${n}: Buzz`);
+            console.log(`${n}: Buzz`);
           } else if (n % 3 === 0) {
-            vscode.window.showInformationMessage(`${n}: Fizz`);
+            console.log(`${n}: Fizz`);
           } else {
-            vscode.window.showInformationMessage(n);
+            console.log(n);
           }
           n++;
         }
