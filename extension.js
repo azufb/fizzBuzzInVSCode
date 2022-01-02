@@ -32,7 +32,7 @@ function activate(context) {
       // 何も入力されなかった場合、limitNumには代入しない。
       let limitNum;
       if (userInput !== undefined) {
-        limitNum = Number(userInput);
+        limitNum = parseInt(userInput);
       }
 
       // limitNumが、数字ではない場合は実行しない。
@@ -41,11 +41,6 @@ function activate(context) {
           '数字以外が指定されています。再度実行し直してください。'
         );
       } else {
-        // 小数点数であれば、整数に直す。切り捨て。
-        if (!Number.isInteger(limitNum)) {
-          limitNum = Math.trunc(limitNum);
-        }
-
         // 負の数は受け付けたくないので、負の数であれば、マイナスの符号を取り除き、絶対値を返す。
         if (Math.sign(limitNum) === -1) {
           limitNum = Math.abs(limitNum);
