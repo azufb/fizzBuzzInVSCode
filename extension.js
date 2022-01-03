@@ -53,11 +53,11 @@ function activate(context) {
         while (n <= maxNum) {
           if (n % 15 === 0) {
             // 引数に与えた値と行を出力場所に追加。
-            outputArea.appendLine(`${n} FizzBuzz`);
+            outputArea.appendLine(`FizzBuzz`);
           } else if (n % 5 === 0) {
-            outputArea.appendLine(`${n} Buzz`);
+            outputArea.appendLine(`Buzz`);
           } else if (n % 3 === 0) {
-            outputArea.appendLine(`${n} Fizz`);
+            outputArea.appendLine(`Fizz`);
           } else {
             outputArea.appendLine(`${n}`);
           }
