@@ -32,7 +32,7 @@ function activate(context) {
       // 何も入力されなかった場合、maxNumには代入しない。
       let maxNum;
       if (userInput !== undefined) {
-        maxNum = Number(userInput);
+        maxNum = parseInt(userInput);
       }
 
       // maxNumが、数字ではない場合は実行しない。
@@ -41,11 +41,6 @@ function activate(context) {
           '無効な値です。(無効な値：数字以外・負の数・1未満の数)'
         );
       } else {
-        // 小数点以下は、取り除き、整数部のみにする。
-        if (!Number.isInteger(maxNum)) {
-          Math.floor(maxNum);
-        }
-
         // FizzBuzzは1からスタート。
         let n = 1;
         // 出力場所を用意。
