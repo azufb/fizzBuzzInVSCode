@@ -43,7 +43,7 @@ function activate(context) {
       } else {
         // 小数点以下は、取り除き、整数部のみにする。
         if (!Number.isInteger(maxNum)) {
-          Math.trunc(maxNum);
+          Math.floor(maxNum);
         }
 
         // FizzBuzzは1からスタート。
