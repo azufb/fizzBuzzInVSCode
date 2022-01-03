@@ -25,38 +25,39 @@ function activate(context) {
 
       // inputBoxを表示させ、ユーザに入力を促す。
       let userInput = await vscode.window.showInputBox({
-        placeHolder: '好きな数字を入力してください。',
+        placeHolder: '1以上の好きな数字を入力してください。',
       });
 
       // 文字列型のuserInputの値を数値型に変更。数値型にできないような文字列であれば、NaNになる。
-      // 何も入力されなかった場合、limitNumには代入しない。
-      let limitNum;
+      // 何も入力されなかった場合、maxNumには代入しない。
+      let maxNum;
       if (userInput !== undefined) {
-        limitNum = parseInt(userInput);
+        maxNum = Number(userInput);
       }
 
-      // limitNumが、数字ではない場合は実行しない。
-      if (Number.isNaN(limitNum)) {
+      // maxNumが、数字ではない場合は実行しない。
+      if (Number.isNaN(maxNum) || Math.sign(maxNum) === -1 || maxNum < 1) {
         vscode.window.showErrorMessage(
-          '数字以外が指定されています。再度実行し直してください。'
+          '無効な値です。(無効な値：数字以外・負の数・1未満の数)'
         );
       } else {
-        // 負の数は受け付けたくないので、負の数であれば、マイナスの符号を取り除き、絶対値を返す。
-        if (Math.sign(limitNum) === -1) {
-          limitNum = Math.abs(limitNum);
+        // 小数点以下は、取り除き、整数部のみにする。
+        if (!Number.isInteger(maxNum)) {
+          Math.trunc(maxNum);
         }
 
-        let n = 0;
-        // FizzBuzz in VSCode!用に出力場所を用意。
+        // FizzBuzzは1からスタート。
+        let n = 1;
+        // 出力場所を用意。
         let outputArea = vscode.window.createOutputChannel('FizzBuzz');
-        while (n <= limitNum) {
+        while (n <= maxNum) {
           if (n % 15 === 0) {
             // 引数に与えた値と行を出力場所に追加。
-            outputArea.appendLine(`${n}: FizzBuzz`);
+            outputArea.appendLine(`${n} FizzBuzz`);
           } else if (n % 5 === 0) {
-            outputArea.appendLine(`${n}: Buzz`);
+            outputArea.appendLine(`${n} Buzz`);
           } else if (n % 3 === 0) {
-            outputArea.appendLine(`${n}: Fizz`);
+            outputArea.appendLine(`${n} Fizz`);
           } else {
             outputArea.appendLine(`${n}`);
           }
